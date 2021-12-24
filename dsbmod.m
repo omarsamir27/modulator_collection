@@ -16,9 +16,8 @@ classdef dsbmod
         function sc = suppressed_carrier(obj,Ac)
             sc = (Ac .* obj.carrier) .* obj.resampled_msg;
         end
-        function tc = transmitted_carrier(obj,Mu)
-            Ac = Mu/max(obj.resampled_msg);
-            tc = Ac*(Ac + Mu * obj.resampled_msg) .* obj.carrier;
+        function tc = transmitted_carrier(obj,Mu,Ac)
+            tc = Ac*(1 + Mu * obj.resampled_msg/max(obj.resampled_msg)) .* obj.carrier;
         end
     end
 end
