@@ -2,7 +2,7 @@ classdef ssbmod
     methods (Static)
         function ideal = idealSC(dsbsc,fc)
             fs = fc * 5;
-            ideal = lowpass(dsbsc,fc,fs,'ImpulseResponse','iir');
+            ideal = bandpass(dsbsc,[1e5-4e3 1e5],fs,'ImpulseResponse','iir','Steepness',0.999,'StopbandAttenuation',90);
         end
         
         function practical = practicalSC(dsbsc,fc)
@@ -15,7 +15,7 @@ classdef ssbmod
         end
         function tc = transmitted_carrier(dsbtc,fc)
             fs = fc * 5;
-            tc = lowpass(dsbtc,fc,fs,'ImpulseResponse','iir');
+            tc = bandpass(dsbtc,[1e5-4e3 1e5],fs,'ImpulseResponse','iir','Steepness',0.999,'StopbandAttenuation',90);
         end
     end
 end
