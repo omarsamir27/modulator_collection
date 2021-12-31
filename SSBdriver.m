@@ -36,6 +36,6 @@ commonspectrum.time_plot(ssbTC,48e3,'TimeSSB-TC.png');
 commonspectrum.freq_plot(ssbTC,48e3,'FreqSSB-TC.png');
 
 %single side band transmitted carrier demodulation using envelope detector
-ssbTCenv = ssbdemod.envelope(ssbSC,4e3,5e5);
+ssbTCenv = ssbdemod.envelope(ssbSC,4e3,48e3);
 commonspectrum.time_plot(ssbTCenv,48e3,'TimeSSB-TC-Demod-Env.png');
 commonspectrum.freq_plot(ssbTCenv,48e3,'FreqSSB-TC-Demod-Env.png');
