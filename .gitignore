@@ -1,2 +1,41 @@
 
 *.asv
+TimeSSB-TC.png
+TimeSSB-TC-Demod-Env.png
+TimeSSB-SC.png
+TimeSSB-SC-Demod-Coherent.png
+TimeSSB-SC-Butter.png
+TimeSSB-SC-Butter.png
+TimeSSB-SC-Demod-Coherent.png
+TimeSSB-SC.png
+TimeSSB-TC-Demod-Env.png
+TimeSSB-TC.png
+SSB SNR30 time.png
+SSB SNR30 freq.png
+SSB SNR10 time.png
+SSB SNR10 freq.png
+SSB SNR0 time.png
+SSB SNR0 freq.png
+Original-Freq.png
+NBFM_Modulated.png
+FreqSSB-TC.png
+FreqSSB-TC-Demod-Env.png
+FreqSSB-SC.png
+FreqSSB-SC-Demod-Coherent.png
+FreqSSB-SC-Butter.png
+Filtered-Time.png
+Filtered-Freq.png
+envelope DSC-TC.png
+envelope DSC-SC.png
+DSB-TC.png
+DSB-SC.png
+DSB SNR30 time.png
+DSB SNR30 freq.png
+DSB SNR10 time.png
+DSB SNR10 freq.png
+DSB SNR0 time.png
+DSB SNR0 freq.png
+DSB errphase time.png
+DSB errphase freq.png
+DSB errFreq time.png
+DSB errFreq freq.png

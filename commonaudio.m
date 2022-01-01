@@ -9,7 +9,10 @@ classdef commonaudio
         function obj = commonaudio(path,fcut)
             obj.info = audioinfo(path);
             [obj.audio_file,obj.fs] = audioread(path);
-            obj.filtered_data = lowpass(obj.audio_file,fcut,obj.fs,'ImpulseResponse','iir');
+%             obj.filtered_data = lowpass(obj.audio_file,fcut,obj.fs,'ImpulseResponse','iir');
+            filter = generate_filter(length(obj.audio_file),obj.fs,fcut);
+            temp = fftshift(fft(obj.audio_file)).*filter;
+            obj.filtered_data =real(ifft(ifftshift(temp)));
         end
         function play(obj,filtered)
             if strcmp(filtered,'filtered')

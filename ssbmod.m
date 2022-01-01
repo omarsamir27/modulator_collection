@@ -1,8 +1,11 @@
 classdef ssbmod
     methods (Static)
         function ideal = idealSC(dsbsc,fc)
-            fs = fc * 5;
-            ideal = bandpass(dsbsc,[1e5-4e3 1e5],fs,'ImpulseResponse','iir','Steepness',0.999,'StopbandAttenuation',90);
+            len=length(dsbsc);
+            filter=generate_filter(len,5*fc,fc);
+            %filter off by one
+            ssbf=fftshift(fft(dsbsc)).*filter;
+            ideal=real(ifft(ifftshift(ssbf)));
         end
         
         function practical = practicalSC(dsbsc,fc)
@@ -14,8 +17,12 @@ classdef ssbmod
             practical = filter(b, a, dsbsc);
         end
         function tc = transmitted_carrier(dsbtc,fc)
-            fs = fc * 5;
-            tc = bandpass(dsbtc,[1e5-4e3 1e5],fs,'ImpulseResponse','iir','Steepness',0.999,'StopbandAttenuation',90);
+           len=length(dsbtc);
+           filter=generate_filter(len,5*fc,fc);
+           r = find(filter==1,1,'last');
+           filter(r+1) = 1;
+            ssbf=fftshift(fft(dsbtc)).*filter;
+            tc=ifft(ifftshift(ssbf));
         end
     end
 end

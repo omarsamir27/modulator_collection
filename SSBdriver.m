@@ -2,7 +2,7 @@ audio=commonaudio('eric.wav',4000);
 modulated=dsbmod(audio.filtered_data,1e5,audio.fs,5);
 fs = 5e5;
 %double side band supressed carrier modulation 
-dsbSC=modulated.suppressed_carrier(2);
+dsbSC=modulated.suppressed_carrier(1);
 
 %single side band using ideal LPF
 ssbSC = ssbmod.idealSC(dsbSC, 1e5);
@@ -36,6 +36,6 @@ commonspectrum.time_plot(ssbTC,fs,'TimeSSB-TC.png');
 commonspectrum.freq_plot(ssbTC,fs,'FreqSSB-TC.png');
 
 %single side band transmitted carrier demodulation using envelope detector
-ssbTCenv = ssbdemod.envelope(ssbSC,4e3,fs);
+ssbTCenv = ssbdemod.envelope(ssbTC,4e3,fs);
 commonspectrum.time_plot(ssbTCenv,48e3,'TimeSSB-TC-Demod-Env.png');
 commonspectrum.freq_plot(ssbTCenv,48e3,'FreqSSB-TC-Demod-Env.png');

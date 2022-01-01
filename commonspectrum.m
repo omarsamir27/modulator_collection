@@ -3,8 +3,9 @@ classdef commonspectrum
         function freq_plot(signal,fs,name)
             NFFT = 2^(ceil(log2(length(signal))));
             y0 = fftshift(fft(signal,NFFT));
-            f=fs*(-NFFT/2:NFFT/2-1)/NFFT;        
+            f=fs*(-NFFT/2:NFFT/2-1)/NFFT;
             freqvals = abs(y0);  
+            figure('Name',name);
             pl=plot(f,freqvals);
             xlabel('Frequency');
             ylabel('Magnitude');
@@ -14,6 +15,7 @@ classdef commonspectrum
             msg_len = length(signal);
             step = msg_len/fs;
             t = linspace(0,step,msg_len);
+            figure('Name',name);
             pl=plot(t,signal);
             saveas(pl,name);
         end

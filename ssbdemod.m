@@ -3,7 +3,9 @@ classdef ssbdemod
     function demodulated = envelope(modulated,fcut,fs)
        temp= abs(hilbert(modulated));
        demod = temp - mean(temp);
-       filtered=lowpass(demod,fcut,fs,'ImpulseResponse','iir','Steepness',0.999,'StopbandAttenuation',90);
+       filter=generate_filter(length(demod),fs,fcut);
+
+       filtered=real(ifft(ifftshift(fftshift(fft(demod)).*filter)));      
        %HardCoded
        [p,q]=rat(48/500);
        demodulated=resample(filtered,p,q);

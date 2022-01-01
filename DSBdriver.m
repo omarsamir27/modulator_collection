@@ -1,4 +1,7 @@
 audio=commonaudio('eric.wav',4000);
+commonspectrum.freq_plot(audio.audio_file,48e3,'Original-Freq.png');
+commonspectrum.freq_plot(audio.filtered_data,48e3,'Filtered-Freq.png');
+commonspectrum.time_plot(audio.filtered_data,48e3,'Filtered-Time.png');
 modulated=dsbmod(audio.filtered_data,1e5,audio.fs,5);
 %modulation signal 
 dsbSC=modulated.suppressed_carrier(1);
